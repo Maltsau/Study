@@ -20,25 +20,23 @@ function isExist(a){
 }
 
 //Задача 1.3
-function isNumberInRange(n,min,max){
-    if ((typeof(min)!==`number`)||(min===``)||(min==null)) min=-Infinity;
-    if ((typeof(max)!==`number`)||(max===``)||(max==null)) max=Infinity;
-    if ((isNaN(n)==false)&&(n!==``)&&(n!==null)){
-        switch(min<max){
-            case true:{
-                if ((n>=min) && (n<=max)) return true
-                else return false;
-            }
-                break;
-            case false:{
-                if ((n>=max) && (n<=min)) return true
-                else return false;
-            }
-                break;
+function isNumberInRange (input,min,max){
+    if ((isExist(min)==false)||(isNaN(min)==true)) min=-Infinity;
+    if ((isExist(max)==false)||(isNaN(max)==true)) max=Infinity;
+    if ((isExist(input)==true)&&(isNaN(input)==false)){
+      switch (min<=max){
+        case true:{
+          if ((input>=min) && (input<=max)) return true
+          else return false;
         }
+        case false:{
+          if ((input>=max) && (input<=min)) return true
+          else return false;
+        }
+      }  
     }
     else return false;
-    }
+  }
 
 //TEST 1.3
 // let number3=prompt(`Введите число, в отношении которого будет выполняться проверка`, );
@@ -47,36 +45,21 @@ function isNumberInRange(n,min,max){
 // console.log(`Задача 1.3`);
 // console.log(isNumberInRange(number3,beginning3,ending3));
 
-// //Задача 1.4
+//Задача 1.4
 function isArrayLength (arr,min,max){
-    if ((typeof(min)!==`number`)||(min===``)||(min==null)) min=0;
-    if ((typeof(max)!==`number`)||(max===``)||(max==null)) max=Infinity;
-    if (arr){
-        switch(min<max){
-            case true:{
-                if ((arr.length>=min)&&(arr.length<=max)) return true
-                else return false;
-                break;
-            }
-            case false:{
-                if ((arr.length>=max)&&(arr.length<=min)) return true
-                else return false;
-                break; 
-            }
-        } 
-    }
+    if (Array.isArray(arr)==true) return isNumberInRange(arr.length,min,max)
     else return false;
-    }
+}
 
 // //TEST 1.4
 // let arr4 = [];
 // let i=0;
 // do{
-    // arr4[i]=prompt(`Введите элемент массива`);
-    // if (!arr4[i]){
-        // arr4.pop();
-        // break;}
-    // i++;
+//     arr4[i]=prompt(`Введите элемент массива`);
+//     if (!arr4[i]){
+//         arr4.pop();
+//         break;}
+//     i++;
 // } while (true);
 // let beginning4=prompt(`Введите начало диапазона`,``);
 // let ending4=prompt(`Введите окончание диапазона`,``);
@@ -85,24 +68,9 @@ function isArrayLength (arr,min,max){
 
 // //Задача 1.5
 function isStringLength (str,min,max){
-    if ((typeof(min)!==`number`)||(min===``)||(min==null)) min=0;
-    if ((typeof(max)!==`number`)||(max===``)||(max==null)) max=Infinity;
-    if (str){
-        switch(min<max){
-            case true:{
-                if ((str.length>=min)&&(str.length<=max)) return true
-                else return false;
-                break;
-            }
-            case false:{
-                if ((str.length>=max)&&(str.length<=min)) return true
-                else return false;
-                break; 
-            }
-        } 
-    }
+    if (str) return isNumberInRange(str.length,min,max)
     else return false;
-    }
+}
 
 //TEST 1.5
 // let str5=prompt(`Введите строку`,``);
@@ -112,7 +80,6 @@ function isStringLength (str,min,max){
 // console.log(isStringLength(str5,beginning5,ending5),` длина строки ${str5.length}`);
 
 // Задача 1.6
-
 
 function isInRange (input,dataType,min,max){
 	switch (dataType){
